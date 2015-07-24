@@ -2,7 +2,16 @@ var Profile = require('./profile.js');
 var renderer = require('./renderer.js');
 var querystring = require('querystring');
 
-var commonHeaders = {'Content-Type': 'text/html'}
+var commonHeaders = {'Content-Type': 'text/html'};
+
+// function cssLoader(request, response, fileName){
+// 	if(request.method.toLowerCase() === 'get'){
+// 		if(request.url.search(/\.css$/i) !== -1) {
+// 			response.setHeader('Content-Type', 'text/css');
+// 			response.write(fileName);
+// 		}
+// 	}
+// }
 
 //Handle HTTP route GET / and POST / i.e. Home
 function home(request, response) {
@@ -11,6 +20,7 @@ function home(request, response) {
 	if (request.url === '/') {
 			if(request.method.toLowerCase() === 'get') {
 				//show search
+
 				response.writeHead(200, commonHeaders);
   				renderer.view('header', {}, response);
   				renderer.view('search', {}, response);
@@ -18,8 +28,8 @@ function home(request, response) {
   				response.end();
 			}
 			else {
-				//if url ==== '/' && POST 
-				
+				//if url ==== '/' && POST
+
 
 				//get the post data from body
 				request.on('data', function(postBody){
@@ -32,15 +42,15 @@ function home(request, response) {
 
 				//redirect to /:username
 			}
-		
- 
+
+
 	}
 }
-	
+
 
 //Handle HTTP route Get /:username i.e. /jbarabander
 function user(request, response) {
-	//if url == '/....' 
+	//if url == '/....'
 	var userName = 	request.url.replace('/', '');
 	if (userName.length > 0){
 		response.writeHead(200, commonHeaders);
@@ -78,3 +88,4 @@ function user(request, response) {
 
 module.exports.home = home;
 module.exports.user = user;
+// module.exports.cssLoader = cssLoader;
