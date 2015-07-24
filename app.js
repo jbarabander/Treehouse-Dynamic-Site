@@ -9,7 +9,7 @@ var router = require('./router.js');
 
 var http = require('http');
 http.createServer(function (request, response) {
-	// router.cssLoader(request, response, 'views/style.css');
+	// router.cssLoader(request, response, './views/style.css');
 	router.home(request, response);
 	router.user(request, response);
 }).listen(3000, '127.0.0.1');

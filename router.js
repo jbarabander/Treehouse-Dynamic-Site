@@ -1,6 +1,7 @@
 var Profile = require('./profile.js');
 var renderer = require('./renderer.js');
 var querystring = require('querystring');
+// var fs = require('fs');
 
 var commonHeaders = {'Content-Type': 'text/html'};
 
@@ -8,7 +9,9 @@ var commonHeaders = {'Content-Type': 'text/html'};
 // 	if(request.method.toLowerCase() === 'get'){
 // 		if(request.url.search(/\.css$/i) !== -1) {
 // 			response.setHeader('Content-Type', 'text/css');
+// 			filename = fs.readFileSync(fileName);
 // 			response.write(fileName);
+// 			response.end();
 // 		}
 // 	}
 // }
